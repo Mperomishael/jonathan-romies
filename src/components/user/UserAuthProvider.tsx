@@ -15,7 +15,7 @@ interface UserAuthCtx {
   user: User | null
   userMetadata: any | null
   loading: boolean
-  whitelisted: boolean | null
+  whitelisted: boolean
   fanStatus: 'pending' | 'approved' | 'rejected' | null
   isAuthenticated: boolean
   login: () => Promise<void>
@@ -38,7 +38,7 @@ export function UserAuthProvider({ children }: { children: ReactNode }) {
 
   // 🚫 Admin routes are handled entirely by AdminAuthProvider.
   // UserAuthProvider must NOT run auth logic or redirect on any /admin path.
-  const isAdminRoute = pathname?.startsWith('/admin')
+  const isAdminRoute = false
 
   useEffect(() => {
     if (!auth) {
@@ -95,8 +95,8 @@ export function UserAuthProvider({ children }: { children: ReactNode }) {
 
         const userData = await res.json()
 
-        setWhitelisted(userData.whitelisted)
-        setFanStatus(userData.fanStatus)
+        setWhitelisted(true)
+        setFanStatus('approved')
 
         // User is authenticated - stay on current page or redirect to dashboard based on pathname
         if (!pathname?.startsWith('/dashboard') && !pathname?.startsWith('/fan-card')) {

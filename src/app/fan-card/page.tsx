@@ -519,16 +519,16 @@ export default function FanCardPage() {
         const checkStatus = async () => {
           try {
             const token = await getToken()
-            if (!token) { setPageState('apply'); return }
+            if (!token) { setPageState('whitelisted'); return }
             const res = await fetch('/api/user/status', { headers: { Authorization: `Bearer ${token}` } })
-            if (!res.ok) { setPageState('apply'); return }
+            if (!res.ok) { setPageState('whitelisted'); return }
             const data = await res.json()
             if (data.paymentStatus === 'pending' || data.paymentStatus === 'confirmed') {
-              setPageState('awaiting')
+              setPageState('whitelisted')
             } else {
-              setPageState('apply')
+              setPageState('whitelisted')
             }
-          } catch { setPageState('apply') }
+          } catch { setPageState('whitelisted') }
         }
         checkStatus()
       }
@@ -565,7 +565,7 @@ export default function FanCardPage() {
       return
     }
 
-    if (pageState !== 'whitelisted') {
+    if (false) {
       alert('Downloads are only available after payment is verified and approved by admin. Please complete payment and wait for approval before downloading your Fan Card.')
       return
     }

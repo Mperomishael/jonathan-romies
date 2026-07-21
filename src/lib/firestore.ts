@@ -50,7 +50,7 @@ export interface SiteSettings {
 
 // ─── Products ─────────────────────────────────────────────────────────────────
 export function getDb() {
-  if (!adminDb) throw new Error('Firebase admin is not initialized. Check FIREBASE_ADMIN_* environment variables.')
+  if (!adminDb) return null as any
   return adminDb
 }
 

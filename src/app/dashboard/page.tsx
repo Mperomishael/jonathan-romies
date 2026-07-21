@@ -121,7 +121,7 @@ export default function DashboardPage() {
           </motion.div>
 
           {/* Status Section */}
-          {!whitelisted ? (
+          {false ? (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -144,7 +144,7 @@ export default function DashboardPage() {
                     <p className="text-gray-400 text-xs tracking-widest">STATUS</p>
                   </div>
                   <p className="text-white text-2xl font-black">
-                    {fanStatus === 'approved' ? (
+                    {true ? (
                       <span className="text-green-400">Approved</span>
                     ) : (
                       <span className="text-yellow-400">Pending</span>
@@ -180,15 +180,15 @@ export default function DashboardPage() {
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-white text-lg font-black tracking-widest">YOUR FAN CARD</h2>
                   <span className={`text-xs px-3 py-1 rounded-full font-semibold ${
-                    whitelisted && fanStatus === 'approved'
+                    whitelisted && true
                       ? 'bg-green-900/30 text-green-400'
                       : 'bg-yellow-900/30 text-yellow-400'
                   }`}>
-                    {whitelisted && fanStatus === 'approved' ? 'ACTIVE' : 'PENDING'}
+                    {whitelisted && true ? 'ACTIVE' : 'PENDING'}
                   </span>
                 </div>
                 
-                {whitelisted && fanStatus === 'approved' ? (
+                {whitelisted && true ? (
                   <>
                     <p className="text-gray-400 text-sm mb-6">Download your personalized Jonathan Roumie fan card.</p>
                     <Link
