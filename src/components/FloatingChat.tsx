@@ -11,7 +11,7 @@ interface Message {
   timestamp: Date
 }
 
-const WHATSAPP_NUMBER = '252697996987'
+const WHATSAPP_NUMBER = '2347057505522'
 
 const siteKnowledge = {
   shop: {
